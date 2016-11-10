@@ -29,11 +29,17 @@ public class MainBottomTab  extends RadioGroup implements RadioGroup.OnCheckedCh
     private Paint p = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void onFinishInflate() {
+        super.onFinishInflate();
         p.setColor(getContext().getResources().getColor(R.color.divider));
         setWillNotDraw(false);
         setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.drawLine(0, 0, getWidth(), 1, p);
     }
 
     @Override

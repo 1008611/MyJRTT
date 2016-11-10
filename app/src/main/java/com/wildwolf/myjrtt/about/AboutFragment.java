@@ -17,7 +17,7 @@ public class AboutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_news,null);
+        View view = inflater.inflate(R.layout.fragment_about,null);
         return view;
     }
     protected CharSequence getTitle(){
