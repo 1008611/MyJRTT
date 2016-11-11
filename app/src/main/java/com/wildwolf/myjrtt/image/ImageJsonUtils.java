@@ -7,6 +7,9 @@ import com.wildwolf.myjrtt.beans.ImageBean;
 import com.wildwolf.myjrtt.utils.JsonUtils;
 import com.wildwolf.myjrtt.utils.LogUtils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +18,17 @@ import java.util.List;
  */
 public class ImageJsonUtils {
     private final static String TAG = "ImageJsonUtils";
+
     /**
      * 将获取到的json转换为图片列表对象
+     *
      * @param res
      * @return
      */
     public static List<ImageBean> readJsonImageBeans(String res) {
         List<ImageBean> beans = new ArrayList<ImageBean>();
         try {
+
             JsonParser parser = new JsonParser();
             JsonArray jsonArray = parser.parse(res).getAsJsonArray();
             for (int i = 1; i < jsonArray.size(); i++) {
@@ -30,6 +36,10 @@ public class ImageJsonUtils {
                 ImageBean news = JsonUtils.deserialize(jo, ImageBean.class);
                 beans.add(news);
             }
+
+
+
+
         } catch (Exception e) {
             LogUtils.e(TAG, "readJsonImageBeans error", e);
         }

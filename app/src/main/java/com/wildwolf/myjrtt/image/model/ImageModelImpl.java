@@ -8,6 +8,10 @@ import com.wildwolf.myjrtt.image.ImageJsonUtils;
 import com.wildwolf.myjrtt.utils.LogUtils;
 import com.wildwolf.myjrtt.utils.OkHttpUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -22,7 +26,20 @@ public class ImageModelImpl implements ImageModel {
 
             @Override
             public void onSuccess(String response) {
-                LogUtils.e("TAG------",response);
+                Log.e("TAG--img----",response);
+
+                JSONArray array = null;
+                try {
+                    array = new JSONArray(response);
+                    JSONObject array1 = array.getJSONArray(0).getJSONObject(0);
+                    String a = array1.getString("title");
+                    Log.e("TAG--ceshi",a);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
                 List<ImageBean> iamgeBeanList = ImageJsonUtils.readJsonImageBeans(response);
                 listener.onSuccess(iamgeBeanList);
             }

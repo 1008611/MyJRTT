@@ -90,7 +90,7 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
         @Override
         public void onItemClick(View view, int position) {
             NewsBean news = mAdapter.getItem(position);
-//            H5Activity.forward(getActivity(), news.url, news.title);
+            H5Activity.forward(getActivity(), news.url, news.title);
         }
     };
 
